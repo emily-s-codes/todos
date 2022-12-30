@@ -2,20 +2,20 @@ import { useState } from "react"
 
 const Item = (props) => {
     const item = props.item
-    const setCount = props.setCount
+    const [complete, setComplete] = useState("")
     const count = props.count
-    const itemStatus = props.itemStatus
-    const setItemStatus = props.setItemStatus
-    const [complete, setComplete] = useState(false)
+    const setCount = props.setCount
+    const task = item.task
 
-    const toggleComplete = (e) => {
+    const handleToggle = (e) => {
+        console.log('toggled')
         setComplete(!complete)
         setCount(complete ? count + 1 : count - 1)
-        setItemStatus(!itemStatus)
     }
+
     return (
-        <li onClick={toggleComplete} className={complete ? "complete" : ""}>
-            {item.item}
+        <li onClick={handleToggle} className={complete ? "complete" : ""}>
+            {task}
         </li>
     );
 }
